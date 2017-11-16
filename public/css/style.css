@@ -1,0 +1,201 @@
+.navbar{
+  width: 80%;
+  margin: auto;
+}
+.navbar-brand{
+  color: #616161;
+  font-weight:bolder;
+}
+.nav-item{
+  margin-right: 0.7em;
+}
+
+.bg-red {
+  background: #E74C3C !important;
+  border: 1px solid #E74C3C !important;
+  color: #fff
+}
+
+.badge{
+    position: absolute;
+    top:10px;
+
+    text-align: center;
+
+    color:white;
+}
+
+.contenedor-tienda {
+  background-image: url('../img/main-fondo.jpg');
+  height:100vh;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.buscador{
+  padding-top: 20px;
+  margin-top: 5px !important;
+  margin: auto;
+  width: 80%;
+  height: 8em;
+  background-color: #fafafa;
+}
+.catalogo-nombre{
+  padding-top: 1em;
+  padding-left: 3em;
+    color: #616161
+}
+.titulobusc{
+  padding-left: 1em;
+    color: #616161
+}
+.formbox{
+  margin-top: 2px;
+}
+.formulario{
+  margin-top: 10px;
+}
+.cont-prod{
+  background-color: #fafafa;
+  margin: auto;
+  width: 80%;
+  padding-bottom: 0.5em;
+  min-height: 32em !important;
+}
+
+.productos{
+  border: solid #bdbdbd 1px;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  padding-bottom: 0.5em;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  min-height: 32em !important;
+  max-height: 32em !important;
+  border-radius: 5px;
+
+}
+.foto_m{
+  min-height: 14em;
+  position: relative;
+  border-radius: 5px;
+}
+.foto_m img{
+  padding: 0.5em;
+  max-width: 15em !important;
+  display: block;
+  margin: auto;
+}
+.producto_ind{
+  border: solid #bdbdbd 1px;
+  margin: 0.3em;
+  max-width: 15em !important;
+  border-radius: 5px;
+}
+.form-control{
+  margin-right: 0.3em;
+}
+.datos_prod{
+  margin: 0.5em;
+}
+.carc_caj{
+  height:2em !important;
+}
+
+.input-sm{
+    height:2em !important;
+  padding: 0px 5px;
+  font-size: 15px;
+}
+
+
+
+
+
+
+.contenedor-carrito{
+  padding-top: 20px;
+  margin-top: 5px !important;
+  margin: auto;
+  width: 80%;
+  height: 35em;
+  background-color: #fafafa;
+  border-radius: 5px;
+  border: solid #bdbdbd 1px;
+  color: #616161;
+  max-width: 100em !important;
+}
+
+.nomprod{
+  padding-left: 2em;
+  margin-bottom: 3em;
+}
+
+.botones{
+  margin-top: 2em;
+}
+
+.item{
+  border-radius: 3px;
+  border: solid #e0e0e0 1px;
+  margin-left: 0.5em;
+  margin-right: 0.7em;
+  margin-bottom: 0.15em;
+  margin-top: 0.15em;
+  background-color: white;
+}
+
+.list-group{
+  margin-left: 1em;
+  border-radius: 5px;
+  border: solid #bdbdbd 1px;
+  margin-top: 0em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 25em;
+
+}
+
+.foto img{
+  margin: auto;
+  max-height: 4.2em;
+  margin-left: 0.5em;
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+}
+
+.subt{
+  height:1.7em;
+  margin-left: 1em;
+}
+.detalle p {
+  margin-bottom: 0.3em;
+}
+.detalle{
+  margin-top: 0.5em;
+}
+.btn{
+  margin: 2px;
+}
+
+.container_login {
+
+  background-image: url('../img/login-fondo.jpg');
+  height:100vh;
+  font-family: 'Quicksand', sans-serif;
+
+
+}
+
+
+.formu{
+  color: white;
+  padding-top: 10em !important;
+  width: 30%;
+  margin: auto !important;
+}
+
+
+input.ng-touched.ng-invalid{
+  border: 1px solid red;
+}
