@@ -5,7 +5,13 @@ class Producto extends React.Component {
 
   constructor() {
     super()
+
   }
+
+
+  verMas = () => {
+    this.props.onClick(this.props.id);
+  };
 
   render() {
     return (
@@ -27,10 +33,10 @@ class Producto extends React.Component {
                 </div>
                 <div className="row botones">
                   <div className="col-4 ">
-                    <button type="button" className=" carc_caj btn btn-primary btn-sm">Ver más</button>
+                    <button type="button" className="link carc_caj btn btn-primary btn-sm" onClick={this.verMas}>Ver más</button>
                   </div>
                   <div className="col-4">
-                    <button type="button" className=" carc_caj btn btn-warning btn-sm">Añadir</button>
+                    <button type="button" className="link carc_caj btn btn-warning btn-sm">Añadir</button>
                   </div>
                   <div className="col-4">
                     <input className="form-control input-sm" type="number" min="1" max={this.props.cant} ></input>

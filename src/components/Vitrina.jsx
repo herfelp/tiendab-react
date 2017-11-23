@@ -11,23 +11,22 @@ class Vitrina extends React.Component {
   render() {
 
     let item =[]
+    let click = this.props.onProductClick
+    let obj = this.props.products
     if(this.props.products != null && this.props.filter !=null){
-      console.log("filtro no null")
-      this.props.products.forEach((product)=>{
+      Object.keys(obj).forEach((productId)=>{
         let filtro = this.props.filter
         if(product.nombre.indexOf(filtro) > -1){
-         item.push(<Producto nomb={product.nombre_} imgn={product.imagen} prec={product.precio} cant={product.cantidad} key={product.nombre} />)
+         item.push(<Producto key={productId} id={obj[productId].id} nomb={obj[productId].nombre_} imgn={obj[productId].imagen} prec={obj[productId].precio} cant={obj[productId].cantidad} onClick={click}  />)
         }
       })
     }else if(this.props.products != null){
-      this.props.products.forEach((product)=>{
-         item.push(<Producto nomb={product.nombre_} imgn={product.imagen} prec={product.precio} cant={product.cantidad} key={product.nombre} />)
+        Object.keys(obj).forEach((productId)=>{
+         item.push(<Producto key={productId} id={obj[productId].id} nomb={obj[productId].nombre_} imgn={obj[productId].imagen} prec={obj[productId].precio} cant={obj[productId].cantidad} onClick={click}  />)
       })
     }else{
       item.push(<h1>Loading...</h1>)
     }
-
-
     return (
       <div className="cont-prod">
         <div className="productos d-flex flex-row">
@@ -35,6 +34,7 @@ class Vitrina extends React.Component {
        </div>
      </div>
     )
+
   }
 
 }

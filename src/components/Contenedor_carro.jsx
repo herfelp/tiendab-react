@@ -13,7 +13,7 @@ class Contenedor_carro extends React.Component {
     let item = []
     if (this.props.produ != null) {
       this.props.produ.forEach((conten) => {
-        item.push(<Contenido nomb={conten.nombre_} imgn={conten.imagen} prec={conten.precio} cant={conten.qt} />)
+        item.push(<Contenido key={conten.id} nomb={conten.nombre_} imgn={conten.imagen} prec={conten.precio} cant={conten.qt} />)
       })
     } else {
       item.push(

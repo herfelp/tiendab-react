@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "concurrently \"node server.js\" \"webpack -w\" "
+    "dev": "concurrently \" node server.js\" \"webpack -w\" "
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,11 @@
   },
   "homepage": "https://github.com/herfelp/tiendab-react#readme",
   "dependencies": {
+    "axios": "^0.17.1",
+    "body-parser": "^1.18.2",
+    "cookie-session": "^1.3.2",
     "express": "^4.16.2",
+    "method-override": "^2.3.10",
     "mongodb": "^2.2.33",
     "mongoose": "^4.13.2",
     "react": "^16.1.1",
@@ -38,6 +42,7 @@
     "file-loader": "^1.1.5",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
+    "nodemon": "^1.12.1",
     "webpack": "^3.8.1"
   }
 }

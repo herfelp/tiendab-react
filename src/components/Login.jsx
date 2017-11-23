@@ -11,7 +11,8 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="container_login">
+
+        <div className="container_login">
         <div className="formu ">
           <div className="text-center">
             <h3>Inicia Sesión</h3>
@@ -32,8 +33,8 @@ class Login extends React.Component {
             </div>
           </form>
         </div>
-
-      </div>
+        </div>
+    
     )
   };
 

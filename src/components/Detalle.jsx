@@ -1,7 +1,5 @@
 import React from 'react';
-
-import Barra from './Barra.jsx';
-
+import {Link} from "react-router-dom";
 
 
 class Detalle extends React.Component{
@@ -9,12 +7,48 @@ class Detalle extends React.Component{
     super()
       }
 
+      componentWillUnmount() {
+        console.log("Detalle unmount");
+      }
+
   render(){
     return (
-      <div className="contenedor-tienda">
-        <Barra/>
-        //<Contenedor_carro produ = {this.props.carro} />
-    </div>
+      <div className="contenedor-producto" >
+        <div className="row">
+          <div className="col nomprod-col">
+            <div className="nomprod">
+              <h4>{this.props.nombre}</h4>
+            </div>
+           <hr/>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+
+            <div className="fotop">
+              <img src={"../img/" + this.props.imagen} alt="imagen"/>
+            </div>
+          </div>
+          <div className="col">
+            <div className="datos_prod">
+
+              <div className="carac">
+                <p>Precio: ${this.props.precio}<br/> Cantidad disponible: {this.props.cantidad}
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <div className="boton">
+                <button type="button" className="btn btn-secondary">Atrás</button>
+            </div>
+
+          </div>
+        </div>
+          </div>
     );
 
 };
