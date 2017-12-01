@@ -13,10 +13,10 @@ class Vitrina extends React.Component {
     let item =[]
     let click = this.props.onProductClick
     let obj = this.props.products
+    let filtro = this.props.filter
     if(this.props.products != null && this.props.filter !=null){
       Object.keys(obj).forEach((productId)=>{
-        let filtro = this.props.filter
-        if(product.nombre.indexOf(filtro) > -1){
+        if(obj[productId].nombre.indexOf(filtro) > -1){
          item.push(<Producto key={productId} id={obj[productId].id} nomb={obj[productId].nombre_} imgn={obj[productId].imagen} prec={obj[productId].precio} cant={obj[productId].cantidad} onClick={click}  />)
         }
       })

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "concurrently \" node server.js\" \"webpack -w\" "
+    "dev": "concurrently \" node server.js\" \"webpack -w\" ",
+    "base": "babel-node loadTiendaData.js"
   },
   "repository": {
     "type": "git",

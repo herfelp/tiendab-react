@@ -13,13 +13,17 @@ class Producto extends React.Component {
     this.props.onClick(this.props.id);
   };
 
+  agregar = () => {
+
+  };
+
   render() {
     return (
       <div>
 
             <div className="producto_ind">
               <div className="foto_m">
-                <img src={"../img/" + this.props.imgn}></img>
+                <img src={"../imgs/" + this.props.imgn}></img>
               </div>
               <div className="datos_prod">
                 <div >

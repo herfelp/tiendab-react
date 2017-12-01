@@ -1,9 +1,10 @@
 import React from 'react';
-import axios from 'axios';
+
 import Vitrina from './Vitrina.jsx';
 import Barra from './Barra.jsx';
 import Buscador from './Buscador.jsx';
 import Detalle from './Detalle.jsx';
+import * as api from '../api';
 
 const pushState = (obj, url) =>
    window.history.pushState(obj,'',url);
@@ -20,12 +21,13 @@ class Tienda extends React.Component{
   }
 
   componentDidMount() {
-    axios.get('/tienda/productos').then(resp => {
-      this.setState({produ: resp.data.productos});
+    api.fetchProducts().then(productos => {
+      this.setState({
+        produ: productos
+      });
+      console.log(this.state.produ)
     }).catch(console.error);
   }
-
-
 
 
   filterlist(ev){

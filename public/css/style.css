@@ -26,7 +26,7 @@
 }
 
 .contenedor-tienda {
-  background-image: url('../img/main-fondo.jpg');
+  background-image: url('../imgs/main-fondo.jpg');
   height:100vh;
     font-family: 'Quicksand', sans-serif;
 }
@@ -180,7 +180,7 @@
 
 .container_login {
 
-  background-image: url('../img/login-fondo.jpg');
+  background-image: url('../imgs/login-fondo.jpg');
   height:100vh;
   font-family: 'Quicksand', sans-serif;
 }

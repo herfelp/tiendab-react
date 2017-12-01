@@ -1,13 +1,17 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
+
 class Login extends React.Component {
 
  constructor(){
    super()
  }
 
-
+ handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.validator(this.refs.user.value, this.refs.pass.value);
+ };
 
   render() {
     return (
@@ -17,24 +21,31 @@ class Login extends React.Component {
           <div className="text-center">
             <h3>Inicia Sesión</h3>
           </div>
-          <form >
+          <form onSubmit={this.handleSubmit.bind(this)}>
             <div className="form-group">
               <label >Correo electrónico</label>
-              <input type="email" className="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Ingresa tu email"  name="email" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"/>
+              <input type="email" className="form-control" ref="user" aria-describedby="emailHelp" placeholder="Ingresa tu email"  name="email" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"/>
 
             </div>
             <div className="form-group">
               <label >Contraseña</label>
-              <input type="password" className="form-control" id="InputPassword1" placeholder="Ingresa tu contraseña"  name="password" required/>
+              <input type="password" className="form-control" ref="pass" placeholder="Ingresa tu contraseña"  name="password" required/>
             </div>
             <div className="text-center">
-              <Link  role="submit" className="btn btn-success center-block" to="store" >Ingresar</Link>
+              <button type="submit" className="btn btn-success center-block">
+                Ingresar
+              </button>
+              <Link to="store" className="btn btn-warning center-block">
+                Ingresar
+              </Link>
+
+
 
             </div>
           </form>
         </div>
         </div>
-    
+
     )
   };
 

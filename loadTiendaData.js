@@ -1,0 +1,183 @@
+import { MongoClient } from 'mongodb';
+import assert from 'assert';
+
+
+MongoClient.connect('mongodb://localhost:27017/tienda', (err, db) => {
+  assert.equal(null, err);
+
+  db.collection('productos').insertMany([
+
+    {
+        "id": 1,
+        "nombre_": "Aguacate",
+        "precio": "300",
+        "cantidad": "100",
+        "imagen": "aguacate.jpg",
+        "nombre": "aguacate"
+      },
+      {
+        "id": 2,
+        "nombre_": "Ajo",
+        "precio": "340",
+        "cantidad": "150",
+        "imagen": "ajo.jpg",
+        "nombre": "ajo"
+      },
+      {
+        "id": 3,
+        "nombre_": "Almendras",
+        "precio": "600",
+        "cantidad": "130",
+        "imagen": "almendras.jpg",
+        "nombre": "almendras"
+      },
+      {
+        "id": 4,
+        "nombre_": "Arándanos",
+        "precio": "450",
+        "cantidad": "130",
+        "imagen": "arandanos.jpg",
+        "nombre": "arandanos"
+      },
+      {
+        "id": 5,
+        "nombre_": "Brócoli",
+        "precio": "330",
+        "cantidad": "100",
+        "imagen": "brocoli.png",
+        "nombre": "brocoli"
+      },
+      {
+        "id": 6,
+        "nombre_": "Calabaza",
+        "precio": "320",
+        "cantidad": "200",
+        "imagen": "calabaza.jpg",
+        "nombre": "calabaza"
+      },
+      {
+        "id": 7,
+        "nombre_": "Canela",
+        "precio": "120",
+        "cantidad": "130",
+        "imagen": "canela.jpg",
+        "nombre": "canela"
+      },
+      {
+        "id": 8,
+        "nombre_": "Cebolla",
+        "precio": "250",
+        "cantidad": "200",
+        "imagen": "cebolla.jpg",
+        "nombre": "cebolla"
+      },
+      {
+        "id": 9,
+        "nombre_": "Fresa",
+        "precio": "200",
+        "cantidad": "140",
+        "imagen": "fresa.jpg",
+        "nombre": "fresa"
+      },
+      {
+        "id": 10,
+        "nombre_": "Kiwi",
+        "precio": "260",
+        "cantidad": "400",
+        "imagen": "kiwi.jpg",
+        "nombre": "kiwi"
+      },
+      {
+        "id": 11,
+        "nombre_": "Limón",
+        "precio": "240",
+        "cantidad": "200",
+        "imagen": "limon.jpg",
+        "nombre": "limon"
+      },
+      {
+        "id": 12,
+        "nombre_": "Lychee",
+        "precio": "320",
+        "cantidad": "450",
+        "imagen": "lychee.jpg",
+        "nombre": "lychee"
+      },
+      {
+        "id": 13,
+        "nombre_": "Maiz",
+        "precio": "360",
+        "cantidad": "160",
+        "imagen": "maiz.jpg",
+        "nombre": "maiz"
+      },
+      {
+        "id": 14,
+        "nombre_": "Manzana",
+        "precio": "270",
+        "cantidad": "400",
+        "imagen": "manzana.jpg",
+        "nombre": "manzana"
+      },
+      {
+        "id": 15,
+        "nombre_": "Naranja",
+        "precio": "330",
+        "cantidad": "400",
+        "imagen": "naranja.jpg",
+        "nombre": "naranja"
+      },
+      {
+        "id": 16,
+        "nombre_": "Papa",
+        "precio": "260",
+        "cantidad": "330",
+        "imagen": "papa.jpg",
+        "nombre": "papa"
+      },
+      {
+        "id": 17,
+        "nombre_": "Pasta",
+        "precio": "300",
+        "cantidad": "230",
+        "imagen": "pasta.jpg",
+        "nombre": "pasta"
+      },
+      {
+        "id": 18,
+        "nombre_": "Pimienta",
+        "precio": "340",
+        "cantidad": "230",
+        "imagen": "pimienta.jpg",
+        "nombre": "pimienta"
+      },
+      {
+        "id": 19,
+        "nombre_": "Repollo",
+        "precio": "330",
+        "cantidad": "140",
+        "imagen": "repollo.jpg",
+        "nombre": "repollo"
+      },
+      {
+        "id": 20,
+        "nombre_": "Tomate",
+        "precio": "330",
+        "cantidad": "120",
+        "imagen": "tomate.jpg",
+        "nombre": "tomate"
+      },
+      {
+        "id": 21,
+        "nombre_": "Zanahoria",
+        "precio": "340",
+        "cantidad": "220",
+        "imagen": "zanahoria.jpg",
+        "nombre": "zanahoria"
+      }
+
+  ]).then(response => {
+    console.info('Productos', response.insertedCount);
+
+  });
+});

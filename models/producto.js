@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 
 let productoSchema = new Schema({
+    id: { type: Number },
     nombre_: { type: String },
     nombre: { type: String },
     precio: { type: Number },
