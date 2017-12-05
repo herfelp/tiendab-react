@@ -6,14 +6,27 @@ export const validateUser = (user, pass) => {
               .then(resp => resp.data);
 };
 
-
 export const fetchProducts = () => {
   return axios.get('/tienda/productos')
               .then(resp => resp.data.productos);
 };
 
-
-export const agregaItem = (userId, itemId, qt) => {
-  return axios.post('/tienda/agregaproducto', { userId, itemId, qt })
+export const fetchUser = () => {
+  return axios.get('/tienda/usuario')
               .then(resp => resp.data);
+};
+
+export const agregaItem = (usuarioId, itemId, qt) => {
+  return axios.post('/tienda/agregaproducto', {usuarioId, itemId, qt })
+              .then(resp => resp.data);
+};
+
+export const cuentaCarro = (usuarioId) => {
+  return axios.post('/tienda/cuenta', { usuarioId })
+              .then(resp => resp.data);
+};
+
+export const productosCarro = (usuarioId) => {
+  return axios.post('/tienda/carro', { usuarioId })
+              .then(resp => resp.data.productos);
 };

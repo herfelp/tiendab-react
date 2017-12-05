@@ -9,6 +9,7 @@ let itemSchema = new Schema({
     nombre: { type: String },
     precio: { type: Number },
     qt: { type: Number },
+    sub: { type: Number },
     imagen: { type: String }
 });
 

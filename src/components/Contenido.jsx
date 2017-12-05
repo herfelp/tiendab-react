@@ -20,14 +20,14 @@ class Contenido extends React.Component {
             </div>
             <div className="col-9">
               <div className="detalle">
-                <p>Nombre: </p>
-                <p>Unidades: </p>
+                <p>Nombre: {this.props.nomb}</p>
+                <p>Unidades: {this.props.cant}</p>
               </div>
             </div>
           </div>
           <div className="row ">
             <div className="col subt">
-              <p>Subtotal: </p>
+              <p>Subtotal: ${this.props.sub}</p>
             </div>
           </div>
         </div>

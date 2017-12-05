@@ -13,7 +13,7 @@ class Carrito extends React.Component{
     return (
       <div className="contenedor-tienda">
         <Barra/>
-        <Contenedor_carro produ = {this.props.carro} />
+        <Contenedor_carro carro = {this.props.carro} />
     </div>
     );
 

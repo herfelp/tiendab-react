@@ -28,11 +28,11 @@ mongoose.connect('mongodb://localhost/tienda', {
     });
 
     user.save(function(err){
-     if(!err){
+     if (!err) {
        console.log("Credenciales de acceso:")
        console.log("Usuario: "+user.nombre)
        console.log("Contraseña: "+user.password)
-     }else{
+     } else {
        console.log("Error" + err);
      }
    });
@@ -52,7 +52,7 @@ router.use(cookieSession({
 }));
 
 
-router.post("/login", function(req, res) {
+router.post("/login", (req, res) => {
   Users.findOne({
       nombre: req.body.user,
       password: req.body.pass
@@ -69,8 +69,12 @@ router.post("/login", function(req, res) {
     });
 });
 
+router.get("/usuario", (req,res) => {
+  res.send(req.session.user_id);
+});
 
-router.get('/productos',(req, res)=>{
+
+router.get('/productos',(req, res) => {
 Producto.find({})
      .exec(function(err, productos){
        if (err) {
@@ -82,46 +86,74 @@ Producto.find({})
 });
 
 
-router.get('/productos/:productoId',(req, res) => {
+router.get('/productos/:productoId', (req, res) => {
    let pid = req.params.productoId;
   Producto.findOne({id:pid})
        .exec(function(err, producto){
          if (err) {
            res.status(500)
            res.json(err)
-         }
-         res.json(producto);
+          }
+          res.json(producto);
        })
 });
 
 
 router.post('/agregaproducto', (req, res) => {
-  //agrega un producto al carrito del usuario
+  Producto.findOne({
+      id: req.body.itemId
+    },
+    function(err, producto) {
+      if (producto != null) {
+        var item = new Items({
+          userId: req.body.usuarioId,
+          nombre_: producto.nombre_,
+          nombre: producto.nombre,
+          precio: producto.precio,
+          qt: req.body.qt,
+          sub: req.body.qt * producto.precio,
+          imagen: producto.imagen
+        });
+        item.save(function(err){
+         if(!err){
+              Items.count({ userId:req.body.usuarioId }, (err, count) => {
+               res.send({count});
+               });
+         }else{
+           console.log("Error" + err);
+         }
+       });
+
+      } else {
+        console.log("no existe el producto");
+        res.send( "no existe el producto");
+      }
+    });
+});
+
+
+router.post('/cuenta', (req, res) => {
+  Items.count({ userId:req.body.usuarioId }, (err, count) => {
+   res.send({count});
+   });
+});
+
+
+router.post('/carro', (req, res) => {
+  Items.find({userId:req.body.usuarioId})
+       .exec(function(err, productos){
+         if (err) {
+           res.status(500)
+           res.json(err)
+         }
+         res.json({productos});
+       })
 });
 
 
 
-let mdb;
-MongoClient.connect('mongodb://localhost/tienda', (err, db) => {
-   assert.equal(null, err);
-   mdb = db;
-});
 
 
-
-router.get('/productoscarro',(req, res)=>{
-  let productoscarro = {};
-  mdb.createCollection('productoscarro');
-  mdb.collection('productoscarro').find({})
-      .each((err, productocarro) => {
-         assert.equal(null, err);
-          if(!productocarro) { //no more productos
-             res.send({ productoscarro });
-             return;
-          }
-         productoscarro[productocarro._id] = productocarro;
-      });
-});
 
 
 module.exports = router;

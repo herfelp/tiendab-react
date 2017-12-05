@@ -7,9 +7,6 @@ class Detalle extends React.Component{
     super()
       }
 
-      componentWillUnmount() {
-        console.log("Detalle unmount");
-      }
 
   render(){
     return (
@@ -43,7 +40,7 @@ class Detalle extends React.Component{
         <div className="row">
           <div className="col">
             <div className="boton">
-                <button type="button" className="btn btn-secondary">Atrás</button>
+                   <Link to="store" className="btn btn-secondary">Atrás</Link>
             </div>
 
           </div>

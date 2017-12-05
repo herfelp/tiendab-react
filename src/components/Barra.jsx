@@ -1,7 +1,31 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import * as api from '../api';
 
 class Barra extends React.Component {
+  constructor() {
+    super()
+  this.state = {
+    countCarro: ''
+   }
+  }
+
+  componentDidMount() {
+    api.fetchUser().then(user => {
+      this.setState({
+        userId: user
+      });
+
+      api.cuentaCarro(this.state.userId).then(count => {
+        this.setState({
+          countCarro: count.count
+        });
+      }).catch(console.error);
+
+    }).catch(console.error);
+  };
+
+
   render() {
     return (
       <div>
@@ -14,7 +38,7 @@ class Barra extends React.Component {
                     <Link to="store" className="nav-link"><i className="material-icons">apps</i></Link>
                   </li>
                   <li className="nav-item">
-                    <Link to="carro" className="nav-link"><i className="material-icons">shopping_cart</i><span className="badge bg-red">{this.props.numerocarrito}</span></Link>
+                    <Link to="carro" className="nav-link"><i className="material-icons">shopping_cart</i><span className="badge bg-red">{this.state.countCarro}</span></Link>
                   </li>
                   <li className="nav-item">
                     <Link to="" className="nav-link"><i className="material-icons">exit_to_app</i></Link>
@@ -27,8 +51,5 @@ class Barra extends React.Component {
   }
 }
 
-Barra.defaultProps = {
-    numerocarrito: '1'
-}
 
 export default Barra;

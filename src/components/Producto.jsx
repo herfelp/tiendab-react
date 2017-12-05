@@ -13,9 +13,12 @@ class Producto extends React.Component {
     this.props.onClick(this.props.id);
   };
 
-  agregar = () => {
 
-  };
+  agregar(event) {
+      event.preventDefault();
+      this.props.onAgregar( this.props.id, this.input.value);
+      this.input.value = '';
+  }
 
   render() {
     return (
@@ -40,10 +43,10 @@ class Producto extends React.Component {
                     <button type="button" className="link carc_caj btn btn-primary btn-sm" onClick={this.verMas}>Ver más</button>
                   </div>
                   <div className="col-4">
-                    <button type="button" className="link carc_caj btn btn-warning btn-sm">Añadir</button>
+                    <button type="button" className="link carc_caj btn btn-warning btn-sm" onClick={this.agregar.bind(this)} >Añadir</button>
                   </div>
                   <div className="col-4">
-                    <input className="form-control input-sm" type="number" min="1" max={this.props.cant} ></input>
+                    <input ref={(input) => this.input = input} className="form-control input-sm" type="number" min="1" max={this.props.cant} ></input>
                   </div>
                 </div>
               </div>

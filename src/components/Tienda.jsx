@@ -16,7 +16,10 @@ class Tienda extends React.Component{
   this.state = {
     filter: null,
     produ: [],
-    currentProductId: null
+    currentProductId: null,
+    agregaProductId: null,
+    userId: null,
+    countCarro: null
    }
   }
 
@@ -25,9 +28,14 @@ class Tienda extends React.Component{
       this.setState({
         produ: productos
       });
-      console.log(this.state.produ)
     }).catch(console.error);
-  }
+
+    api.fetchUser().then(user => {
+      this.setState({
+        userId: user
+      });
+    }).catch(console.error);
+  };
 
 
   filterlist(ev){
@@ -47,8 +55,19 @@ class Tienda extends React.Component{
     });
   };
 
-  //lookup el producto
-  // this.state.produ[productId]
+
+  agregaProducto( proid, qt  ) {
+    if(qt!=''){
+       let userId =  this.state.userId;
+       api.agregaItem(userId, proid, qt).then(count => {
+         this.setState({
+           countCarro: count.count
+         });
+           console.log(count.count);
+       }).catch(console.error);
+    }
+  };
+
 
 
 currentContent(){
@@ -68,8 +87,10 @@ return (
      <Buscador onChange={this.filterlist.bind(this)} />
      <Vitrina
         onProductClick = {this.fetchProduct}
+        onAgregar = {this.agregaProducto.bind(this)}
         products = {this.state.produ}
-        filter = {this.state.filter}/>
+        filter = {this.state.filter}
+         />
  </div>
   );
 };
@@ -77,7 +98,9 @@ return (
   render(){
     return (
       <div className="contenedor-tienda">
-        <Barra/>
+        <Barra
+          conteo = {this.state.countCarro}
+          />
              {this.currentContent()}
     </div>
     );
