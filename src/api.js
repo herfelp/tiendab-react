@@ -11,8 +11,18 @@ export const fetchProducts = () => {
               .then(resp => resp.data.productos);
 };
 
+export const fetchProduct = productId => {
+  return axios.get(`/tienda/productos/${productId}`)
+              .then(resp => resp.data)
+};
+
 export const fetchUser = () => {
   return axios.get('/tienda/usuario')
+              .then(resp => resp.data);
+};
+
+export const clearSession = () => {
+  return axios.get('/tienda/session')
               .then(resp => resp.data);
 };
 

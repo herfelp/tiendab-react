@@ -15,15 +15,16 @@ class Barra extends React.Component {
       this.setState({
         userId: user
       });
-
       api.cuentaCarro(this.state.userId).then(count => {
+         console.log(count.count)
         this.setState({
           countCarro: count.count
         });
       }).catch(console.error);
-
     }).catch(console.error);
   };
+
+
 
 
   render() {
@@ -34,14 +35,14 @@ class Barra extends React.Component {
               <div >
               </div>
                 <ul className="navbar-nav ml-auto">
-                  <li >
-                    <Link to="store" className="nav-link"><i className="material-icons">apps</i></Link>
+                  <li className="nav-item" onClick={this.props.carritoinact}>
+                    <Link to="/" className="nav-link"><i className="material-icons" >apps</i></Link>
                   </li>
-                  <li className="nav-item">
-                    <Link to="carro" className="nav-link"><i className="material-icons">shopping_cart</i><span className="badge bg-red">{this.state.countCarro}</span></Link>
+                  <li className="nav-item" onClick={this.props.carritoactiv}>
+                    <Link to="/" className="nav-link"><i className="material-icons" >shopping_cart</i><span className="badge bg-red">{this.state.countCarro}</span></Link>
                   </li>
-                  <li className="nav-item">
-                    <Link to="" className="nav-link"><i className="material-icons">exit_to_app</i></Link>
+                  <li className="nav-item" onClick={this.props.exit}>
+                    <Link to="/" className="nav-link"><i className="material-icons" >exit_to_app</i></Link>
                   </li>
                 </ul>
             </nav>

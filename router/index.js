@@ -60,16 +60,21 @@ router.post("/login", (req, res) => {
     function(err, user) {
       if (user != null) {
         req.session.user_id = user._id;
-        console.log("validado");
         res.send({status: "Validado"});
       } else {
-        console.log("no validado");
-        res.send({status: "No_validado"});
+        res.send({status: null});
       }
     });
 });
 
-router.get("/usuario", (req,res) => {
+router.get("/usuario", (req, res) => {
+  res.send(req.session.user_id);
+
+});
+
+router.get("/session", (req, res) => {
+  console.log("Exit session")
+  req.session.user_id = '';
   res.send(req.session.user_id);
 });
 
@@ -86,8 +91,8 @@ Producto.find({})
 });
 
 
-router.get('/productos/:productoId', (req, res) => {
-   let pid = req.params.productoId;
+router.get('/productos/:productId', (req, res) => {
+   let pid = req.params.productId;
   Producto.findOne({id:pid})
        .exec(function(err, producto){
          if (err) {
@@ -95,6 +100,7 @@ router.get('/productos/:productoId', (req, res) => {
            res.json(err)
           }
           res.json(producto);
+
        })
 });
 
@@ -134,7 +140,11 @@ router.post('/agregaproducto', (req, res) => {
 
 router.post('/cuenta', (req, res) => {
   Items.count({ userId:req.body.usuarioId }, (err, count) => {
-   res.send({count});
+     if(count === 0){
+       res.send('');
+     }else{
+      res.send({count})
+    }
    });
 });
 

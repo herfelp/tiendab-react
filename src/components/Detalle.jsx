@@ -7,6 +7,10 @@ class Detalle extends React.Component{
     super()
       }
 
+  limpiar = () => {
+    this.props.onClick();
+  };
+
 
   render(){
     return (
@@ -40,9 +44,8 @@ class Detalle extends React.Component{
         <div className="row">
           <div className="col">
             <div className="boton">
-                   <Link to="store" className="btn btn-secondary">Atrás</Link>
+                   <Link to="/" className="btn btn-secondary" onClick={this.limpiar}>Atrás</Link>
             </div>
-
           </div>
         </div>
           </div>

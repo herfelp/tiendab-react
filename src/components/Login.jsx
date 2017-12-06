@@ -35,11 +35,6 @@ class Login extends React.Component {
               <button type="submit" className="btn btn-success center-block">
                 Ingresar
               </button>
-              <Link to="store" className="btn btn-warning center-block">
-                Ingresar
-              </Link>
-
-
 
             </div>
           </form>

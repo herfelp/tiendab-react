@@ -41,8 +41,8 @@ class Contenedor_carro extends React.Component {
           <div className="row botones">
             <div className="col">
 
-              <Link  role="button" className="btn btn-secondary" to="store" >Cancelar</Link>
-              <Link  role="button"  className="btn btn-secondary" to="store">Pagar</Link>
+              <Link  role="button" className="btn btn-secondary" to="/" onClick={this.props.carritoinact} >Cancelar</Link>
+              <Link  role="button"  className="btn btn-secondary" to="/">Pagar</Link>
             </div>
 
           </div>

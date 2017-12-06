@@ -6,8 +6,7 @@ import Buscador from './Buscador.jsx';
 import Detalle from './Detalle.jsx';
 import * as api from '../api';
 
-const pushState = (obj, url) =>
-   window.history.pushState(obj,'',url);
+
 
 
 class Tienda extends React.Component{
@@ -38,6 +37,8 @@ class Tienda extends React.Component{
   };
 
 
+
+
   filterlist(ev){
        let filter = ev.target.value
        this.setState({
@@ -45,13 +46,17 @@ class Tienda extends React.Component{
        })
   }
 
-  fetchProduct = (productId) =>{
-    pushState(
-      { currentProductId: productId },
-        `/productos/${productId}`
-    )
-    this.setState({
-      currentProductId: productId
+  fetchProduct = (productId) => {
+
+    api.fetchProduct(productId).then(product => {
+      this.setState({
+        currentProductId: product._id,
+        produ :{
+          ...this.state.produ,
+          [product._id]: product
+        }
+      });
+
     });
   };
 
@@ -63,22 +68,29 @@ class Tienda extends React.Component{
          this.setState({
            countCarro: count.count
          });
-           console.log(count.count);
        }).catch(console.error);
     }
   };
 
 
+removeState(){
+  this.setState({
+    currentProductId: null
+  });
+};
+
 
 currentContent(){
 
 if(this.state.currentProductId != null){
-  console.log("currentContent")
 return (<Detalle id={this.state.produ[this.state.currentProductId].id}
   nombre={this.state.produ[this.state.currentProductId].nombre_}
     precio={this.state.produ[this.state.currentProductId].precio}
       cantidad={this.state.produ[this.state.currentProductId].cantidad}
-        imagen={this.state.produ[this.state.currentProductId].imagen}/>
+        imagen={this.state.produ[this.state.currentProductId].imagen}
+         onClick={this.removeState.bind(this)}
+
+        />
   )
 }
 
@@ -100,6 +112,9 @@ return (
       <div className="contenedor-tienda">
         <Barra
           conteo = {this.state.countCarro}
+          exit = {this.props.exit}
+          carritoactiv = {this.props.carritoactiv}
+          carritoinact = {this.props.carritoinact}
           />
              {this.currentContent()}
     </div>

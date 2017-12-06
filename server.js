@@ -6,9 +6,11 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
-app.get(['/','/store','/carro','/productos/:'],(req,res)=>{
-res.render('index')
+app.get(['/','/store','/carro','/productos/:productId'],(req,res)=>{
+res.render('index', { productId:req.params.productId } );
 });
+
+
 
 
 
