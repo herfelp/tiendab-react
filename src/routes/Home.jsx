@@ -9,29 +9,48 @@ class Home extends React.Component {
    super()
    this.state = {
      permiso: '',
-     carroAct: ''
+     carroAct: '',
+     userId: null,
+     countCarro: ''
     }
   }
 
-componentDidMount(){
-  api.fetchUser().then(resp =>
-    this.setState({
-      permiso: resp
-    })
- )
- .catch(console.error);
+
+agregaProducto( proid, qt  ) {
+  if(qt!=''){
+    api.fetchUser().then(user => {
+      this.setState({
+        userId: user
+      });
+      let userId =  this.state.userId;
+     api.agregaItem(userId, proid, qt).then(count => {
+       this.setState({
+         countCarro: count.count
+       });
+     }).catch(console.error);
+   }).catch(console.error);
+  }
 };
 
 
   validator = (user, password) =>{
-    api.validateUser(user, password).then(resp =>
-    this.setState({
-      permiso: resp.status
+    api.validateUser(user, password).then(resp => {
+      this.setState({
+         permiso: resp.status
     })
-   )
-   .catch(console.error);
+    api.fetchUser().then(resp =>{
+      this.setState({
+        userId: resp
+      })
+      let userId =  this.state.userId;
+      api.cuentaCarro(userId).then(count => {
+        this.setState({
+          countCarro: count.count
+        });
+      }).catch(console.error);
+    }).catch(console.error);
+   }).catch(console.error);
   };
-
 
 
     clearSession(){
@@ -44,9 +63,11 @@ componentDidMount(){
     };
 
     activa(){
-      this.setState({
-        carroAct: 'activo'
-      })
+      if(this.state.countCarro != undefined){
+         this.setState({
+            carroAct: 'activo'
+         })
+      }
     };
 
     inactiva(){
@@ -63,6 +84,8 @@ componentDidMount(){
       return(  <Tienda
              exit ={this.clearSession.bind(this)}
              carritoactiv ={this.activa.bind(this)}
+             cantCarro={this.state.countCarro}
+             agregaProducto={this.agregaProducto.bind(this)}
         />
      )
     }
@@ -71,6 +94,7 @@ componentDidMount(){
         exit ={this.clearSession.bind(this)}
         carritoactiv ={this.activa.bind(this)}
         carritoinact ={this.inactiva.bind(this)}
+        cantCarro={this.state.countCarro}
       />
     )
 
@@ -78,7 +102,6 @@ componentDidMount(){
   return  <Login
      validator ={this.validator.bind(this)}
     />
-
 };
 
 
@@ -86,12 +109,10 @@ componentDidMount(){
     return(
       <div>
          {this.currentContent()}
-
       </div>
-
     )
   }
-}
+};
 
 
 

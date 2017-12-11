@@ -40,3 +40,8 @@ export const productosCarro = (usuarioId) => {
   return axios.post('/tienda/carro', { usuarioId })
               .then(resp => resp.data.productos);
 };
+
+export const pagaProductos = (usuarioId) => {
+  return axios.post('/tienda/pagar', { usuarioId })
+              .then(resp => resp.data);
+};

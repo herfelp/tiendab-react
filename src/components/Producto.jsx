@@ -5,7 +5,6 @@ class Producto extends React.Component {
 
   constructor() {
     super()
-
   }
 
 
@@ -20,13 +19,13 @@ class Producto extends React.Component {
       this.input.value = '';
   }
 
+
   render() {
     return (
       <div>
-
             <div className="producto_ind">
               <div className="foto_m">
-                <img src={"../imgs/" + this.props.imgn}></img>
+                <img src={"../img/" + this.props.imgn}></img>
               </div>
               <div className="datos_prod">
                 <div >
@@ -51,7 +50,6 @@ class Producto extends React.Component {
                 </div>
               </div>
             </div>
-
       </div>
     )
   }

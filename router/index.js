@@ -73,7 +73,6 @@ router.get("/usuario", (req, res) => {
 });
 
 router.get("/session", (req, res) => {
-  console.log("Exit session")
   req.session.user_id = '';
   res.send(req.session.user_id);
 });
@@ -160,6 +159,16 @@ router.post('/carro', (req, res) => {
        })
 });
 
+
+
+router.post('/pagar', (req, res) => {
+  console.log(req.body.usuarioId);
+  Items.find({userId:req.body.usuarioId}).then(function(err, productos){
+
+      console.log(u)
+
+  })
+});
 
 
 

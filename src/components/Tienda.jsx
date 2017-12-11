@@ -7,8 +7,6 @@ import Detalle from './Detalle.jsx';
 import * as api from '../api';
 
 
-
-
 class Tienda extends React.Component{
   constructor() {
     super()
@@ -17,8 +15,7 @@ class Tienda extends React.Component{
     produ: [],
     currentProductId: null,
     agregaProductId: null,
-    userId: null,
-    countCarro: null
+    userId: null
    }
   }
 
@@ -37,8 +34,6 @@ class Tienda extends React.Component{
   };
 
 
-
-
   filterlist(ev){
        let filter = ev.target.value
        this.setState({
@@ -47,7 +42,6 @@ class Tienda extends React.Component{
   }
 
   fetchProduct = (productId) => {
-
     api.fetchProduct(productId).then(product => {
       this.setState({
         currentProductId: product._id,
@@ -58,18 +52,6 @@ class Tienda extends React.Component{
       });
 
     });
-  };
-
-
-  agregaProducto( proid, qt  ) {
-    if(qt!=''){
-       let userId =  this.state.userId;
-       api.agregaItem(userId, proid, qt).then(count => {
-         this.setState({
-           countCarro: count.count
-         });
-       }).catch(console.error);
-    }
   };
 
 
@@ -89,7 +71,6 @@ return (<Detalle id={this.state.produ[this.state.currentProductId].id}
       cantidad={this.state.produ[this.state.currentProductId].cantidad}
         imagen={this.state.produ[this.state.currentProductId].imagen}
          onClick={this.removeState.bind(this)}
-
         />
   )
 }
@@ -99,7 +80,7 @@ return (
      <Buscador onChange={this.filterlist.bind(this)} />
      <Vitrina
         onProductClick = {this.fetchProduct}
-        onAgregar = {this.agregaProducto.bind(this)}
+        onAgregarVit = {this.props.agregaProducto}
         products = {this.state.produ}
         filter = {this.state.filter}
          />
@@ -111,7 +92,7 @@ return (
     return (
       <div className="contenedor-tienda">
         <Barra
-          conteo = {this.state.countCarro}
+          conteo = {this.props.cantCarro}
           exit = {this.props.exit}
           carritoactiv = {this.props.carritoactiv}
           carritoinact = {this.props.carritoinact}

@@ -10,10 +10,9 @@ class Carrito extends React.Component{
     super()
     this.state = {
       Carro: [],
-      userId: null,
-        countCarro: null
+      userId: null
      }
-      }
+    }
 
       componentDidMount(){
         api.fetchUser().then(user => {
@@ -32,7 +31,7 @@ class Carrito extends React.Component{
     return (
       <div className="contenedor-tienda">
         <Barra
-          conteo = {this.state.countCarro}
+          conteo = {this.props.cantCarro}
           exit = {this.props.exit}
           carritoactiv = {this.props.carritoactiv}
           carritoinact = {this.props.carritoinact}

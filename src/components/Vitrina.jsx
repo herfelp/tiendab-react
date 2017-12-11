@@ -13,7 +13,7 @@ class Vitrina extends React.Component {
 
     let item =[]
     let click = this.props.onProductClick
-    let agrega = this.props.onAgregar
+    let agrega = this.props.onAgregarVit
     let obj = this.props.products
     let filtro = this.props.filter
     if(this.props.products != null && this.props.filter !=null){
